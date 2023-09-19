@@ -1,11 +1,11 @@
 ﻿internal class Animal
 {
-    private Enums.Type type;
-    private Enums.Size size;
+    public Enums.Type Type { get; private set; }
+    public Enums.Size Size { get; private set; }
 
     public Animal(Enums.Type type, Enums.Size size)
     {
-        this.type = type;
-        this.size = size;
+        Type = type;
+        Size = size;
     }
 }
