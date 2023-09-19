@@ -6,5 +6,6 @@
     public Wagon(int id)
     {
         Id = id;
+        Animals = new List<Animal>();
     }
 }
