@@ -18,9 +18,6 @@
 
     public void SortAnimals(List<Animal> animals)
     {
-        foreach (var animal in animals)
-        {
-
-        }
+        animals = animals.OrderBy(animal => animal.Size).ThenBy(animal => animal.Type).ToList();
     }
 }
