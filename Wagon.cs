@@ -2,14 +2,13 @@
 {
     public int Id { get; private set; }
     public int Size { get; private set; }
-    public int MaxSize { get; private set; }
     public List<Animal> Animals { get; private set; }
+    public const int MaxSize = 10;
 
     public Wagon(int id)
     {
         Id = id;
         Size = 0;
-        MaxSize = 10;
         Animals = new List<Animal>();
     }
 
@@ -20,19 +19,17 @@
 
     public bool CheckForType(Enums.Type type)
     {
-        foreach (Animal animal in Animals)
-        {
-            if (animal.Type == type)
-            {
-                return true;
-            }
-        }
+        return Animals.Any(animal => animal.Type == type);
+    }
 
-        return false;
+    public bool CheckForSize(Enums.Size size)
+    {
+        return Animals.Any(animal => animal.Size == size);
     }
 
     public void AddAnimal(Animal animal)
     {
+        Size += (int)animal.Size;
         Animals.Add(animal);
     }
 }

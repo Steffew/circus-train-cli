@@ -15,4 +15,12 @@
         Wagons.Add(wagon);
         return wagon;
     }
+
+    public void SortAnimals(List<Animal> animals)
+    {
+        foreach (var animal in animals)
+        {
+
+        }
+    }
 }
