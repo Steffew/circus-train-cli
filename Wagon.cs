@@ -14,7 +14,7 @@
 
     public bool CheckForSpace(Animal animal)
     {
-        return ((int)animal.Size >= MaxSize - Size);
+        return (Size + (int)animal.Size) <= MaxSize;
     }
 
     public bool CheckForType(Enums.Type type)
@@ -32,4 +32,20 @@
         Size += (int)animal.Size;
         Animals.Add(animal);
     }
+
+    public bool CanAddAnimal(Animal newAnimal)
+    {
+        if (!CheckForSpace(newAnimal))
+            return false;
+
+        if (newAnimal.Type == Enums.Type.Carnivore)
+        {
+            return !Animals.Any(animal => animal.Size <= newAnimal.Size);
+        }
+        else
+        {
+            return !CheckForType(Enums.Type.Carnivore);
+        }
+    }
+
 }
