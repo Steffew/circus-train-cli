@@ -44,8 +44,7 @@
         }
         else
         {
-            return !CheckForType(Enums.Type.Carnivore);
+            return !Animals.Any(animal => animal.Type == Enums.Type.Carnivore && animal.Size >= newAnimal.Size);
         }
     }
-
 }
