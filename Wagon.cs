@@ -3,7 +3,7 @@
     public int Id { get; private set; }
     public int Size { get; private set; }
     public List<Animal> Animals { get; private set; }
-    public const int MaxSize = 10;
+    public int MaxSize = 10;
 
     public Wagon(int id)
     {

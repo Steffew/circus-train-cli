@@ -28,8 +28,8 @@
         {
             bool isAssigned = false;
 
-            var suitableWagon = Wagons
-                .OrderBy(w => 10 - w.Size)
+            Wagon? suitableWagon = Wagons
+                .OrderBy(w => w.MaxSize - w.Size)
                 .FirstOrDefault(w => w.CanAddAnimal(animal));
 
             if (suitableWagon != null)
@@ -40,7 +40,7 @@
 
             if (!isAssigned)
             {
-                var newWagon = AddWagon();
+                Wagon newWagon = AddWagon();
                 newWagon.AddAnimal(animal);
             }
         }
