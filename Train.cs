@@ -18,8 +18,9 @@
 
     public void SortAnimals(List<Animal> animals)
     {
-        animals = animals.OrderBy(animal => animal.Size).ThenBy(animal => animal.Type).ToList();
+        animals.Sort((a, b) => a.Type != b.Type ? a.Type.CompareTo(b.Type) : -a.Size.CompareTo(b.Size));
     }
+
 
     public void AssignAnimals(List<Animal> animals)
     {
