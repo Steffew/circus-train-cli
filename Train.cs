@@ -21,27 +21,18 @@
         animals.Sort((a, b) => a.Type != b.Type ? a.Type.CompareTo(b.Type) : -a.Size.CompareTo(b.Size));
     }
 
-
     public void AssignAnimals(List<Animal> animals)
     {
-        foreach (var animal in animals)
+        foreach (Animal animal in animals)
         {
-            bool isAssigned = false;
-
             Wagon? suitableWagon = Wagons
                 .OrderBy(w => w.MaxSize - w.Size)
-                .FirstOrDefault(w => w.CanAddAnimal(animal));
+                .FirstOrDefault(w => w.TryAddAnimal(animal));
 
-            if (suitableWagon != null)
-            {
-                suitableWagon.AddAnimal(animal);
-                isAssigned = true;
-            }
-
-            if (!isAssigned)
+            if (suitableWagon == null)
             {
                 Wagon newWagon = AddWagon();
-                newWagon.AddAnimal(animal);
+                newWagon.TryAddAnimal(animal);
             }
         }
     }
