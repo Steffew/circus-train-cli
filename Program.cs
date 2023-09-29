@@ -9,6 +9,5 @@ List<Animal> animals = new List<Animal>()
     new Animal(Enums.Type.Herbivore, Enums.Size.Large),
 };
 
-train.SortAnimals(animals);
 train.AssignAnimals(animals);
 train.PrintAnimals(animals);

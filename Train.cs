@@ -1,28 +1,28 @@
 ﻿internal class Train
 {
     public List<Wagon> Wagons { get; private set; }
-    private int wagonAmount = 0;
 
     public Train()
     {
         Wagons = new List<Wagon>();
     }
 
-    public Wagon AddWagon()
+    private Wagon GetNewWagon()
     {
-        wagonAmount++;
-        Wagon wagon = new Wagon(wagonAmount);
+        Wagon wagon = new Wagon(Wagons.Count);
         Wagons.Add(wagon);
         return wagon;
     }
 
-    public void SortAnimals(List<Animal> animals)
+    private void SortAnimals(List<Animal> animals)
     {
         animals.Sort((a, b) => a.Type != b.Type ? a.Type.CompareTo(b.Type) : -a.Size.CompareTo(b.Size));
     }
 
     public void AssignAnimals(List<Animal> animals)
     {
+        SortAnimals(animals);
+
         foreach (Animal animal in animals)
         {
             Wagon? suitableWagon = Wagons
@@ -31,7 +31,7 @@
 
             if (suitableWagon == null)
             {
-                Wagon newWagon = AddWagon();
+                Wagon newWagon = GetNewWagon();
                 newWagon.TryAddAnimal(animal);
             }
         }
